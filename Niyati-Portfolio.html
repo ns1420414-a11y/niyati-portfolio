@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niyati Shah | BCA Student Portfolio</title>
+<meta name="description" content="Portfolio of Niyati Shah, BCA student at CHARUSAT with skills in HTML, C programming and MS Excel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F6F3; --panel:#EFEDE8; --ink:#16181D; --muted:#5B5F68; --line:#D6D3CC; --accent:#1F3A5F;
+  --head:'Syne','Trebuchet MS',Arial,sans-serif; --body:'DM Sans','Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.layout{display:grid;grid-template-columns:320px 1fr;max-width:1180px;margin:0 auto}
+
+/* Sidebar */
+.side{position:sticky;top:0;height:100vh;padding:64px 40px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+.name{font-family:var(--head);font-weight:800;font-size:3rem;line-height:1.02;letter-spacing:.01em}
+.role{margin-top:14px;color:var(--muted);font-size:1rem}
+nav ul{list-style:none;margin-top:48px}
+nav a{display:flex;align-items:center;gap:14px;padding:8px 0;text-decoration:none;color:var(--muted);font-weight:500}
+nav a::before{content:"";width:9px;height:9px;background:var(--line);transform:rotate(45deg);transition:background .2s,transform .2s}
+nav a:hover,nav a.active{color:var(--ink)}
+nav a.active::before,nav a:hover::before{background:var(--accent);transform:rotate(45deg) scale(1.3)}
+.side small{color:var(--muted);font-size:.85rem}
+
+/* Content */
+main{padding:64px 56px 40px}
+section{padding:0 0 72px}
+h2{font-family:var(--head);font-weight:700;font-size:1.9rem;margin-bottom:28px;display:flex;align-items:center;gap:16px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+h3{font-size:1.1rem;font-weight:700}
+.lead{font-size:1.25rem;line-height:1.6;max-width:62ch}
+.hero{padding-top:8px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:12px 24px;border:2px solid var(--ink);text-decoration:none;font-weight:700;transition:background .2s,color .2s}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Skills */
+.skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.group{background:var(--panel);padding:24px 28px}
+.group h3{margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.tags li{border:1px solid var(--ink);padding:5px 16px;font-weight:500;font-size:.98rem}
+
+/* Education timeline */
+.timeline{list-style:none;position:relative;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--ink)}
+.timeline li{position:relative;padding-bottom:30px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-36px;top:7px;width:12px;height:12px;background:var(--ink);transform:rotate(45deg)}
+.timeline p{color:var(--muted)}
+.timeline .when{font-weight:700;color:var(--accent)}
+
+/* Projects */
+.project-list{list-style:none;display:grid;gap:12px}
+.project-list li{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(--panel);font-weight:500}
+.project-list li::before{content:"";flex:none;width:10px;height:10px;margin-top:9px;background:var(--accent);transform:rotate(45deg)}
+
+/* Certificates */
+.certs{list-style:none;display:grid;gap:12px}
+.certs li{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(--panel);font-weight:500}
+.certs li::before{content:"";flex:none;width:10px;height:10px;margin-top:9px;background:var(--accent);transform:rotate(45deg)}
+
+/* Contact */
+.contact-list{list-style:none;display:grid;gap:14px;max-width:560px}
+.contact-list a{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:16px 20px;border:1px solid var(--line);text-decoration:none;transition:border-color .2s,background .2s}
+.contact-list a:hover{border-color:var(--accent);background:var(--panel)}
+.contact-list span{color:var(--muted)}
+.contact-list b{font-weight:700;word-break:break-all}
+
+footer{padding:24px 56px 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);margin:0 56px 0 56px}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static;height:auto;padding:36px 24px 20px;border-right:0;border-bottom:1px solid var(--line)}
+  .name{font-size:2.4rem}
+  nav ul{display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:20px}
+  .side small{display:none}
+  main{padding:40px 24px 16px}
+  footer{margin:0 24px;padding:20px 0 32px}
+  .skill-groups{grid-template-columns:1fr}
+  .contact-list a{grid-template-columns:1fr;gap:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <header class="side">
+    <div>
+      <h1 class="name">Niyati<br>Shah</h1>
+      <p class="role">BCA student at CHARUSAT, Vadodara</p>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#contact">Contact me</a></li>
+        </ul>
+      </nav>
+    </div>
+    <small>Bachelor of Computer Application, 2024–2027</small>
+  </header>
+
+  <main>
+    <section id="about" class="hero">
+      <h2>About me</h2>
+      <p class="lead">I am a dedicated and motivated BCA student with a strong interest in business, technology and continuous learning. I communicate clearly, work well in a team and approach problems with a proactive attitude.</p>
+      <p class="lead" style="margin-top:16px">I am looking for practical experience where I can contribute to an organization's success and build a professional career.</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Contact me</a>
+        <a class="btn" href="#certificates">View certificates</a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill-groups">
+        <div class="group">
+          <h3>Technical</h3>
+          <ul class="tags">
+            <li>HTML</li>
+            <li>C programming</li>
+            <li>MS Excel</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Professional</h3>
+          <ul class="tags">
+            <li>Teamwork</li>
+            <li>Problem solving</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ol class="timeline">
+        <li>
+          <h3>Bachelor of Computer Application (BCA)</h3>
+          <p>Charotar University of Science and Technology (CHARUSAT)</p>
+          <p class="when">2024 – 2027</p>
+        </li>
+        <li>
+          <h3>Higher Secondary Education (12th)</h3>
+          <p>Shree Narayan Vidhyalaya, Vadodara</p>
+          <p class="when">Score: 56%</p>
+        </li>
+        <li>
+          <h3>Secondary Education (10th)</h3>
+          <p>Bright Day School, Vadodara</p>
+          <p class="when">Score: 48%</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul class="project-list">
+        <li>Hospital Appointment Management System</li>
+        <li>Contact Us Page</li>
+      </ul>
+    </section>
+
+    <section id="certificates">
+      <h2>Certificates</h2>
+      <ul class="certs">
+        <li>Introduction to Data Analytics</li>
+        <li>Foundation of Digital Marketing and E-commerce</li>
+        <li>AI Generative: Prompt Engineering Basics</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact me</h2>
+      <ul class="contact-list">
+        <li><a href="tel:+919875169805"><span>Phone</span><b>9875169805</b></a></li>
+        <li><a href="mailto:ns1420414@gmail.com"><span>Email</span><b>ns1420414@gmail.com</b></a></li>
+        <li><a href="https://www.linkedin.com/in/niyati-shah-579ba6306" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><b>niyati-shah-579ba6306</b></a></li>
+      </ul>
+    </section>
+  </main>
+
+</div>
+<footer>&copy; <span id="year">2026</span> Niyati Shah</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Highlight the current section in the menu
+var links = document.querySelectorAll('nav a');
+var sections = Array.prototype.map.call(links, function (a) {
+  return document.querySelector(a.getAttribute('href'));
+});
+function setActive() {
+  var pos = window.scrollY + window.innerHeight * 0.35, current = 0;
+  sections.forEach(function (s, i) { if (s.offsetTop <= pos) current = i; });
+  links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+}
+window.addEventListener('scroll', setActive, { passive: true });
+setActive();
+</script>
+</body>
+</html>
